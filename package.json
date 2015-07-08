@@ -1,0 +1,49 @@
+{
+  "name": "passport-facebook-authcode",
+  "version": "0.1.1",
+  "description": "Passport strategy for authenticating with Google one time authorization code using the OAuth 2.0 API.",
+  "author": {
+    "name": "Adriano Foschi",
+    "email": "hadokee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hadokee/passport-facebook-authcode.git"
+  },
+  "bugs": {
+    "url": "http://github.com/hadokee/passport-facebook-authcode/issues"
+  },
+  "main": "./lib/passport-facebook-authcode",
+  "dependencies": {
+    "pkginfo": "0.2.x",
+    "passport-oauth": "0.1.x"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "passport",
+    "facebook",
+    "auth",
+    "authorization",
+    "code",
+    "authcode",
+    "authn",
+    "authentication",
+    "identity"
+  ],
+  "homepage": "https://github.com/hadokee/passport-facebook-authcode",
+  "scripts": {},
+  "maintainers": [
+    {
+      "name": "hadokee",
+      "email": "hadokee@gmail.com"
+    }
+  ]
+}
