@@ -159,13 +159,6 @@ FacebookAuthCodeStrategy.prototype.userProfile = function(accessToken, done) {
     url.search = (url.search ? url.search + '&' : '') + 'appsecret_proof=' + encodeURIComponent(proof);
   }
 
-  if (this._profileFields) {
-    var fields = this._convertProfileFields(this._profileFields);
-    if (fields !== '') {
-      url.search = (url.search ? url.search + '&' : '') + 'fields=' + fields;
-    }
-  }
-
   url = uri.format(url);
 
   this._oauth2.get(url, accessToken, function(error, body, res) {
@@ -183,6 +176,7 @@ FacebookAuthCodeStrategy.prototype.userProfile = function(accessToken, done) {
             middleName: json.middle_name || ''
           },
           gender: json.gender || '',
+          locale: json.locale || '',
           emails: [{
             value: json.email || ''
           }],
@@ -198,34 +192,6 @@ FacebookAuthCodeStrategy.prototype.userProfile = function(accessToken, done) {
       done(e);
     }
   });
-};
-
-FacebookAuthCodeStrategy.prototype._convertProfileFields = function(profileFields) {
-  var map = {
-    'id': 'id',
-    'username': 'username',
-    'displayName': 'name',
-    'name': ['last_name', 'first_name', 'middle_name'],
-    'gender': 'gender',
-    'profileUrl': 'link',
-    'emails': 'email',
-    'photos': 'picture'
-  },
-  fields = [];
-
-  profileFields.forEach(function(field) {
-    if (typeof map[field] === 'undefined') {
-      return fields.push(field);
-    }
-
-    if (Array.isArray(map[field])) {
-      Array.prototype.push.apply(fields, map[field]);
-    } else {
-      fields.push(map[field]);
-    }
-  });
-
-  return fields.join(',');
 };
 
 /**
